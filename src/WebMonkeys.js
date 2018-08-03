@@ -692,11 +692,13 @@ load(this, function (exports) {
     return init();
   }
 
-  if (typeof window === 'object')
-    exports.WebMonkeys = WebMonkeys;
-
-  if (typeof module !== "undefined")
+  if (typeof module !== "undefined") {
     module.exports = WebMonkeys;
+  } else {
+    if (typeof window === 'object') {
+      exports.WebMonkeys = WebMonkeys;
+    }
+  }
 });
 
 function load(root, factory) {
